@@ -10,21 +10,24 @@ import UIKit
 
 class PhotoCollectionViewCell: UICollectionViewCell {
 
-    let identifier: String
+    let identifier: String = "PhotoCollectionViewCell"
+    
+    @IBOutlet weak var mainImageView: UIImageView!
+    @IBOutlet weak var imageTitle: UILabel!
+    @IBOutlet weak var creatorName: UILabel!
+    @IBOutlet weak var likedByPeople: UILabel!
     
     override init(frame: CGRect) {
-        identifier = "PhotoCollectionViewCell"
         super.init(frame: frame)
     }
     
     required init?(coder: NSCoder) {
-        identifier = "PhotoCollectionViewCell"
         super.init(coder: coder)
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
     }
 
 }
