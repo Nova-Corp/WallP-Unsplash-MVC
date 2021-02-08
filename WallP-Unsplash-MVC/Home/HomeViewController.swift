@@ -8,9 +8,12 @@
 
 import UIKit
 
-class HomeViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class HomeViewController: UICollectionViewController {
 
     let homeView = HomeView()
+    let homeDataModel = HomeDataModel()
+    
+    var homeData: [PhotoList]?
     
     init() {
         super.init(collectionViewLayout: homeView.compositionalLayout())
@@ -24,22 +27,42 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         
         self.title = Home.title
         homeView.registerCollectionView(collectionView: collectionView)
+        
+        homeDataModel.delegate = self
+        homeDataModel.fetchImageListFromServer()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
     }
-    
-    
 }
 
-extension HomeViewController {
+extension HomeViewController: UICollectionViewDelegateFlowLayout, HomeDataSource {
+    func didReceiveHomeData(from dataModel: [PhotoList]) {
+        homeData = dataModel
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        100
+        homeData?.count ?? 0
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: homeView.photoCollectionViewCell.identifier, for: indexPath) as! PhotoCollectionViewCell
-        return cell
+       
+        let data = homeData?[indexPath.item]
         
+        cell.imageTitle.text = data?.altDescription
+        cell.creatorName.text = "by \(data?.user?.firstName ?? "") \(data?.user?.lastName ?? "")"
+        cell.likedByPeople.text = "\(data?.likes ?? 0)"
+        cell.mainImageView.downloaded(from: data?.imageURLs.thumb ?? Home.imagePlaceHolderURL, contentMode: .scaleAspectFill)
+        return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath.item)
     }
 }
