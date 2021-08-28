@@ -8,11 +8,16 @@
 
 import Foundation
 
+enum HttpMethod: String {
+    case GET
+    case POST
+}
+
 class APIManager {
     static let shared = APIManager()
     private init() {}
     
-    func fetchData(url: String, header: [String: String]?, method: String?, completion: @escaping(Data?, Error?) -> Void) {
+    func fetchData(url: String, header: [String: String]?, method: HttpMethod = .GET, completion: @escaping(Data?, Error?) -> Void) {
         
         guard let url = URL(string: url) else {
             print("URL Not Valid.")
@@ -20,9 +25,7 @@ class APIManager {
         }
         var urlRequest = URLRequest(url: url)
         
-        if let method = method {
-            urlRequest.httpMethod = method
-        }
+        urlRequest.httpMethod = method.rawValue
         
         if let header = header {
             for param in header {

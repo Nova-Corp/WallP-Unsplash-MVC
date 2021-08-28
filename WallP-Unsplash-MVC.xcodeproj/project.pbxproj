@@ -49,6 +49,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		840CA15D267E026A00E17E18 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				84B54EA325CFAD86000D04C6 /* Assets.xcassets */,
+				84B54EA525CFAD86000D04C6 /* LaunchScreen.storyboard */,
+				84B54EA825CFAD86000D04C6 /* Info.plist */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
 		841115C925D0DC920013FE7C /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -80,9 +90,7 @@
 				84B54EB025CFAEE2000D04C6 /* Delegate */,
 				841115C925D0DC920013FE7C /* Service */,
 				84B54EB125CFAF27000D04C6 /* Home */,
-				84B54EA325CFAD86000D04C6 /* Assets.xcassets */,
-				84B54EA525CFAD86000D04C6 /* LaunchScreen.storyboard */,
-				84B54EA825CFAD86000D04C6 /* Info.plist */,
+				840CA15D267E026A00E17E18 /* Global */,
 				841115C725D0DA4D0013FE7C /* README.md */,
 			);
 			path = "WallP-Unsplash-MVC";
@@ -342,7 +350,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H922B55M85;
-				INFOPLIST_FILE = "WallP-Unsplash-MVC/Info.plist";
+				INFOPLIST_FILE = "WallP-Unsplash-MVC/Global/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -360,7 +368,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H922B55M85;
-				INFOPLIST_FILE = "WallP-Unsplash-MVC/Info.plist";
+				INFOPLIST_FILE = "WallP-Unsplash-MVC/Global/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

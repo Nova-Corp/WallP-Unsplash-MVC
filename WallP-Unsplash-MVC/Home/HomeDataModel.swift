@@ -30,7 +30,8 @@ class HomeDataModel {
     var delegate: HomeDataSource?
     
     func fetchImageListFromServer() {
-        APIManager.shared.fetchData(url: Home.randomPhotoListURL, header: Home.header, method: "GET"){ data, error in
+        APIManager.shared.fetchData(url: Home.randomPhotoListURL,
+                                    header: Home.header){ data, error in
             
             let decoder = JSONDecoder()
             guard let data = data else {
